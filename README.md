@@ -1,6 +1,6 @@
 # Production ready containerized Django for Heroku deployment
 
-Develop and test your Django web applications directly within a production environment which can be eeasily be deployed on docker hosting services such as Heroku.
+Develop and test your Django web applications directly within a production environment which can easily be deployed on docker hosting services such as Heroku.
 
 This repository contains all the necessary files for building docker container to run Django web applications. More specifically, two containers will be created (web service, and db service). In building the docker image for web service, the following softwares are installed:
 
