@@ -1,0 +1,3 @@
+POSTGRES_DB=djangodb
+POSTGRES_USER=djpguser
+POSTGRES_PASSWORD=change_this_right_away
