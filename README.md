@@ -1,4 +1,4 @@
-# Production ready containerized Django for Heroku deployment
+# Production ready containerized Django deployment
 
 Develop and test your Django web applications directly within a production environment which can easily be deployed on docker hosting services such as Heroku.
 
@@ -16,7 +16,7 @@ The db service simply builds the postgres image from [official docker hub](https
 
 **Prerequisite** Install [Docker](https://www.docker.com)
 
-After cloning this repository, explore the directory structure, and file contents. The two hidden files (.env, and .db_env) contains the environment variables which are  utilized in building and deploying the docker container. At the very least, makesure to change the Django SECRET_KEY, and database password (SQL_PASSWORD, POSTGRES_PASSWORD), and keep these files out of your version control (e.g. by updating these filenames in .gitignore) 
+After cloning this repository, explore the directory structure, and file contents. The two hidden files (.env, and .db_env) contains the environment variables which are  utilized in building and deploying the docker container. At the very least, make sure to change the Django SECRET_KEY, and database password (SQL_PASSWORD, POSTGRES_PASSWORD), and keep these files out of your version control (e.g. by updating these filenames in .gitignore) 
 
 Execute the following shell scripts in the main repo directory to build and run the containerized django web application.
 
@@ -32,9 +32,9 @@ $ ./migrate.sh
 At this stage your web server will be running on port 7778 (as set in .env file). Point your browser to http://localhost:7778 to verify that your web service is up and running.
 
 The **web** directory is the main Django project directory, which has been mapped to **/web** inside the docker container. This means that if you place any files in this web directory it will be accessible to the docker container. Under the web directory, all the static files are collected under the **static** directory.
-Similary the **data/db** directory is mapped as a volume on the **/var/lib/postgresql/data** directory in the db service container. This ensures your data in the database persists in your local directory when the container is removed.   
+Similarly the **data/db** directory is mapped as a volume on the **/var/lib/postgresql/data** directory in the db service container. This ensures your data in the database persists in your local directory when the container is removed.   
 
-What next? You can kickstart your development and testing directly inside the container via these mapped volumes. For instance the following command will create a new django application in the web service container. You would be able to modify this application directly from the newly created local application directory under the **web** directory 
+What next? You can kickstart your development and testing directly inside the container via these mapped volumes. For instance the following command will create a new Django application in the web service container. You would be able to modify this application directly from the newly created local application directory under the **web** directory 
 
 ```console
 $ docker-compose exec web python manage.py startapp yourappname
@@ -50,7 +50,7 @@ $ ./down.sh
 
 **Prerequisite** Heroku account, and Heroku CLI. (https://www.heroku.com)
 
-To deploy your containerized web application on heroku run the heroku.sh script
+To deploy your containerized web application on Heroku run the heroku.sh script
 
 ```console
 $ ./heroku.sh
