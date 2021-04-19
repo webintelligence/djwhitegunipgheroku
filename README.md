@@ -1,5 +1,7 @@
 # Production ready containerized Django for Heroku deployment
 
+Develop and test your Django web applications directly within a production environment which can be eeasily be deployed on docker hosting services such as Heroku.
+
 This repository contains all the necessary files for building docker container to run Django web applications. More specifically, two containers will be created (web service, and db service). In building the docker image for web service, the following softwares are installed:
 
 * [Django web framework](https://www.djangoproject.com)
@@ -32,9 +34,25 @@ At this stage your web server will be running on port 7778 (as set in .env file)
 The **web** directory is the main Django project directory, which has been mapped to **/web** inside the docker container. This means that if you place any files in this web directory it will be accessible to the docker container. Under the web directory, all the static files are collected under the **static** directory.
 Similary the **data/db** directory is mapped as a volume on the **/var/lib/postgresql/data** directory in the db service container. This ensures your data in the database persists in your local directory when the container is removed.   
 
+What next? You can kickstart your development and testing directly inside the container via these mapped volumes. For instance the following command will create a new django application in the web service container. You would be able to modify this application directly from the newly created local application directory under the **web** directory 
+
+```console
+$ docker-compose exec web python manage.py startapp yourappname
+```
+
+Once you are done, you can stop the containers.
+
 ```console
 $ ./down.sh
 ```
 
-## Deployement
+## Deployment
+
+**Prerequisite** Heroku account, and Heroku CLI. (https://www.heroku.com)
+
+To deploy your containerized web application on heroku run the heroku.sh script
+
+```console
+$ ./heroku.sh
+```
 
